@@ -45,31 +45,17 @@ class RadioPage extends StatelessWidget {
     }
     
     
-    // Create providers list with error handling
-    final List<BlocProvider> providers = [];
-    
-    // Add core providers first (these are essential)
-    try {
-      providers.add(BlocProvider.value(value: getIt<RadioBloc>()));
-      developer.log('[RadioPage] RadioBloc added to providers', name: 'RadioPage');
-    } catch (e) {
-      developer.log('[RadioPage] Failed to get RadioBloc: $e', name: 'RadioPage');
-    }
-    
-    try {
-      providers.add(BlocProvider.value(value: getIt<RadioPlayerBloc>()));
-      developer.log('[RadioPage] RadioPlayerBloc added to providers', name: 'RadioPage');
-    } catch (e) {
-      developer.log('[RadioPage] Failed to get RadioPlayerBloc: $e', name: 'RadioPage');
-    }
-    
-    
-    return BlocProvider<RadioBloc>(
-      create: (context) => getIt<RadioBloc>(),
-      child: BlocProvider<RadioPlayerBloc>(
-        create: (context) => getIt<RadioPlayerBloc>(),
-        child: RadioPageView(key: const ValueKey('radio_page_view')),
-      ),
+    final radioBloc = getIt<RadioBloc>();
+    final radioPlayerBloc = getIt<RadioPlayerBloc>();
+
+    developer.log('[RadioPage] Providing shared RadioBloc and RadioPlayerBloc instances', name: 'RadioPage');
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<RadioBloc>.value(value: radioBloc),
+        BlocProvider<RadioPlayerBloc>.value(value: radioPlayerBloc),
+      ],
+      child: const RadioPageView(key: ValueKey('radio_page_view')),
     );
   }
 }

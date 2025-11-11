@@ -52,11 +52,27 @@ class _M3RadioFabState extends State<M3RadioFab> {
   void didUpdateWidget(M3RadioFab oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    // Clear optimistic spinner once any transition/busy state is reflected
-    if (_optimisticLoading && (widget.isInitializing || widget.isConnecting || widget.isBuffering || widget.isRetrying || widget.isPlaying)) {
-      _optimisticLoading = false;
+    if (!_optimisticLoading) return;
+
+    final playbackChanged = widget.isPlaying != oldWidget.isPlaying;
+    final busyStateChanged =
+        widget.isInitializing != oldWidget.isInitializing ||
+        widget.isConnecting != oldWidget.isConnecting ||
+        widget.isBuffering != oldWidget.isBuffering ||
+        widget.isRetrying != oldWidget.isRetrying;
+
+    if (playbackChanged || busyStateChanged || (!_isBusy && !widget.isPlaying)) {
+      setState(() {
+        _optimisticLoading = false;
+      });
     }
   }
+
+  bool get _isBusy =>
+      widget.isInitializing ||
+      widget.isConnecting ||
+      widget.isBuffering ||
+      widget.isRetrying;
 
 
   Widget _buildTextContent() {
