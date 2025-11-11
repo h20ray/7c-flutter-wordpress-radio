@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "772035745796",
+    "firebase_url": "https://upradio-545f7.firebaseio.com",
+    "project_id": "upradio-545f7",
+    "storage_bucket": "upradio-545f7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772035745796:android:4a7a2c9f9b1ab4057bfd51",
+        "android_client_info": {
+          "package_name": "com.tujuhcahaya.upradiosmg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772035745796-5ojl0n0636is4bquv89ehdiv7tbusoqh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tujuhcahaya.upradiosmg",
+            "certificate_hash": "4f7fc60d23ef733598574e58093c4b222b5e6169"
+          }
+        },
+        {
+          "client_id": "772035745796-btuurnd0ot91s62kfd5ag027n3tkpcko.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tujuhcahaya.upradiosmg",
+            "certificate_hash": "ea67bcbc5c9adb2cc817b17a44731ee4632a3c9c"
+          }
+        },
+        {
+          "client_id": "772035745796-1ur4888og1hu9vtqlhitgfsfkg4k7d3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7iUqgO3MdqNzv7gqKd0W_W6_dcF3sN7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772035745796-1ur4888og1hu9vtqlhitgfsfkg4k7d3j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
