@@ -136,7 +136,7 @@ class CustomVideoRenderer extends StatelessWidget {
         article: article,
       );
     } else {
-      return const Text('No video found');
+      return Text('no_video_found'.tr());
     }
   }
 }

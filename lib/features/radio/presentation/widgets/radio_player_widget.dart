@@ -97,14 +97,14 @@ class RadioPlayerWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Live Radio',
+                        'radio_live'.tr(),
                         style:
                             Theme.of(context).textTheme.headlineSmall?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
                       ),
                       Text(
-                        'Streaming from server',
+                        'radio_streaming_from_server'.tr(),
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: Colors.grey,
                             ),
@@ -330,7 +330,7 @@ class RadioPlayerWidget extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        'Volume reduced',
+                        'radio_volume_reduced'.tr(),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Colors.orange[800],
                               fontWeight: FontWeight.w500,
@@ -359,7 +359,7 @@ class RadioPlayerWidget extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        'Will auto-resume',
+                        'radio_will_auto_resume'.tr(),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Colors.blue[800],
                               fontWeight: FontWeight.w500,
@@ -406,7 +406,7 @@ class RadioPlayerWidget extends StatelessWidget {
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  'Loading album art...',
+                  'radio_album_art_loading'.tr(),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Colors.blue[800],
                         fontWeight: FontWeight.w500,
@@ -435,7 +435,7 @@ class RadioPlayerWidget extends StatelessWidget {
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  'Album art error',
+                  'radio_album_art_error'.tr(),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Colors.red[800],
                         fontWeight: FontWeight.w500,
@@ -464,7 +464,7 @@ class RadioPlayerWidget extends StatelessWidget {
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  'Offline mode',
+                  'radio_offline_mode'.tr(),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Colors.orange[800],
                         fontWeight: FontWeight.w500,
@@ -493,7 +493,7 @@ class RadioPlayerWidget extends StatelessWidget {
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  'Cached',
+                  'radio_cached'.tr(),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Colors.green[800],
                         fontWeight: FontWeight.w500,
@@ -585,20 +585,22 @@ class RadioPlayerWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Stream Information',
+              'radio_stream_info'.tr(),
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 8),
             Text(
-              'URL: ${radioConfig.streamUrl}',
+              'radio_stream_url'.tr(namedArgs: {'url': radioConfig.streamUrl}),
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     fontFamily: 'monospace',
                   ),
             ),
             Text(
-              'Last Updated: ${_formatDateTime(radioConfig.lastUpdated)}',
+              'radio_last_updated'.tr(
+                namedArgs: {'date': _formatDateTime(radioConfig.lastUpdated)},
+              ),
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: Colors.grey,
                   ),
@@ -614,15 +616,15 @@ class RadioPlayerWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Configuration',
+          'radio_configuration'.tr(),
           style: Theme.of(context).textTheme.titleSmall?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
         ),
         const SizedBox(height: 8),
-        _buildConfigRow('Autoplay', radioConfig.autoplay),
-        _buildConfigRow('Show Album Cover', radioConfig.showAlbumCover),
-        _buildConfigRow('Text Scrolling', radioConfig.textScrolling),
+        _buildConfigRow('radio_autoplay'.tr(), radioConfig.autoplay),
+        _buildConfigRow('radio_show_album_cover'.tr(), radioConfig.showAlbumCover),
+        _buildConfigRow('radio_text_scrolling'.tr(), radioConfig.textScrolling),
       ],
     );
   }
@@ -658,9 +660,9 @@ class RadioPlayerWidget extends StatelessWidget {
               currentAlbumArtUrl, isDucking, canAutoResume) =>
           isPlaying
               ? (isDucking
-                  ? 'Playing (Volume Reduced)'
+                  ? 'radio_playing_volume_reduced'.tr()
                   : 'radio_now_playing'.tr())
-              : (canAutoResume ? 'Paused (Auto-resume)' : 'radio_paused'.tr()),
+              : (canAutoResume ? 'radio_paused_auto_resume'.tr() : 'radio_paused'.tr()),
       initial: () => 'radio_initializing'.tr(),
       orElse: () => 'radio_initializing'.tr(),
     );

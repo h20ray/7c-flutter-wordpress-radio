@@ -40,7 +40,7 @@ class CommentSubmittedSuccessfully extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.5,
               child: ElevatedButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Close'),
+                child: Text('close'.tr()),
               ),
             )
           ],

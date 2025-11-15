@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 /// Coming Soon placeholder page for Shoutbox feature
@@ -8,7 +9,7 @@ class ShoutboxComingSoonPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shoutbox'),
+        title: Text('shoutbox_title'.tr()),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
@@ -27,7 +28,7 @@ class ShoutboxComingSoonPage extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               Text(
-                'Coming Soon',
+                'coming_soon_title'.tr(),
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.primary,
@@ -35,7 +36,7 @@ class ShoutboxComingSoonPage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                'The Shoutbox feature is currently under development. Stay tuned for updates!',
+                'coming_soon_message'.tr(),
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                 ),
@@ -45,7 +46,7 @@ class ShoutboxComingSoonPage extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: () => Navigator.of(context).pop(),
                 icon: const Icon(Icons.arrow_back),
-                label: const Text('Go Back'),
+                label: Text('go_back'.tr()),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),

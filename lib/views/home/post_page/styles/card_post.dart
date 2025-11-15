@@ -144,7 +144,7 @@ class CardPost extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Tags',
+                                    'tags'.tr(),
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleMedium
@@ -175,7 +175,7 @@ class CardPost extends StatelessWidget {
                                   children: [
                                     _CardActionButton(
                                       icon: AppIcons.send,
-                                      label: 'Share',
+                                      label: 'share'.tr(),
                                       onTap: () async {
                                         await SharePlus.instance
                                             .share(ShareParams(
@@ -264,7 +264,7 @@ class _CardSaveButton extends ConsumerWidget {
       icon: isSaving
           ? Icons.favorite
           : (isSaved ? AppIcons.heartFilled : AppIcons.heart),
-      label: isSaving ? 'Saving...' : (isSaved ? 'Saved' : 'Save'),
+      label: isSaving ? 'saving'.tr() : (isSaved ? 'saved'.tr() : 'save'.tr()),
       isActive: isSaved || isSaving,
       onTap: isSaving
           ? null
@@ -311,20 +311,20 @@ class _CardOfflineSaveButton extends ConsumerWidget {
 
         return _CardActionButton(
           icon: isOfflineSaved ? AppIcons.downloadFilled : AppIcons.download,
-          label: isOfflineSaved ? 'Offline' : 'Save Offline',
+          label: isOfflineSaved ? 'offline'.tr() : 'save_offline'.tr(),
           isActive: isOfflineSaved,
           onTap: onTap,
         );
       },
       loading: () => _CardActionButton(
         icon: AppIcons.download,
-        label: 'Loading...',
+        label: 'loading'.tr(),
         isActive: false,
         onTap: null,
       ),
       error: (error, stack) => _CardActionButton(
         icon: AppIcons.download,
-        label: 'Error',
+        label: 'error'.tr(),
         isActive: false,
         onTap: () => ref.invalidate(offlinePostStatusProvider(article.id)),
       ),

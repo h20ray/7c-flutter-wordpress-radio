@@ -1,4 +1,5 @@
 import 'package:app_settings/app_settings.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -18,7 +19,7 @@ class InternetNotAvailableDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'No Internet Available',
+              'no_internet_available'.tr(),
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     color: Colors.red,
                     fontWeight: FontWeight.bold,
@@ -33,13 +34,13 @@ class InternetNotAvailableDialog extends StatelessWidget {
             ),
             const SizedBox(height: AppDefaults.margin),
             Text(
-              'Currently you don\'t have internet available',
+              'no_internet_message'.tr(),
               style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
-              'Please open your settings and enable internet by turning wifi or mobile data',
+              'enable_internet_message'.tr(),
               style: Theme.of(context).textTheme.bodySmall,
               textAlign: TextAlign.center,
             ),
@@ -52,7 +53,7 @@ class InternetNotAvailableDialog extends StatelessWidget {
                   onPressed: () {
                     AppSettings.openAppSettingsPanel(AppSettingsPanelType.wifi);
                   },
-                  child: const Text('Open Settings'),
+                  child: Text('open_settings'.tr()),
                 ),
               ),
             )

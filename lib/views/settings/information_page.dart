@@ -70,7 +70,9 @@ class ContactPage extends ConsumerWidget {
                 AppUtils.sendEmail(
                   email: email,
                   content: 'write_something_here'.tr(),
-                  subject: 'newspro_subject'.tr(),
+                  subject: 'newspro_subject'.tr(namedArgs: {
+                    'radio_station_name': 'radio_station_name'.tr(),
+                  }),
                 );
               },
               icon: const Icon(Icons.send_outlined),

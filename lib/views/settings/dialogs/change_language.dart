@@ -56,7 +56,7 @@ class _ChangeLanguageHeader extends StatelessWidget {
     return Row(
       children: [
         Text(
-          'change_lanuage'.tr(),
+          'change_language'.tr(),
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const Spacer(),

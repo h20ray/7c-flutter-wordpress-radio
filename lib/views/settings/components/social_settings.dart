@@ -72,7 +72,7 @@ class SocialSettings extends ConsumerWidget {
                 ),
               );
             } else {
-              Fluttertoast.showToast(msg: 'No App Url link provided');
+              Fluttertoast.showToast(msg: 'no_app_url_provided'.tr());
             }
           },
         ),
@@ -92,7 +92,7 @@ class SocialSettings extends ConsumerWidget {
               if (url.isNotEmpty) {
                 AppUtils.openLink(url);
               } else {
-                Fluttertoast.showToast(msg: 'No Facebook link provided');
+                Fluttertoast.showToast(msg: 'no_facebook_link_provided'.tr());
               }
             },
           ),
@@ -112,7 +112,7 @@ class SocialSettings extends ConsumerWidget {
               if (url.isNotEmpty) {
                 AppUtils.openLink(url);
               } else {
-                Fluttertoast.showToast(msg: 'No Youtube link provided');
+                Fluttertoast.showToast(msg: 'no_youtube_link_provided'.tr());
               }
             },
           ),
@@ -132,7 +132,7 @@ class SocialSettings extends ConsumerWidget {
               if (url.isNotEmpty) {
                 AppUtils.openLink(url);
               } else {
-                Fluttertoast.showToast(msg: 'No Twitter link provided');
+                Fluttertoast.showToast(msg: 'no_twitter_link_provided'.tr());
               }
             },
           ),
@@ -152,7 +152,7 @@ class SocialSettings extends ConsumerWidget {
               if (url.isNotEmpty) {
                 AppUtils.openLink(url);
               } else {
-                Fluttertoast.showToast(msg: 'No Instagram link provided');
+                Fluttertoast.showToast(msg: 'no_instagram_link_provided'.tr());
               }
             },
           ),
@@ -172,7 +172,7 @@ class SocialSettings extends ConsumerWidget {
               if (url.isNotEmpty) {
                 AppUtils.openLink(url);
               } else {
-                Fluttertoast.showToast(msg: 'No Tiktok link provided');
+                Fluttertoast.showToast(msg: 'no_tiktok_link_provided'.tr());
               }
             },
           ),
@@ -192,7 +192,7 @@ class SocialSettings extends ConsumerWidget {
               if (url.isNotEmpty) {
                 AppUtils.openLink(url);
               } else {
-                Fluttertoast.showToast(msg: 'No Whatsapp link provided');
+                Fluttertoast.showToast(msg: 'no_whatsapp_link_provided'.tr());
               }
             },
           ),
@@ -212,7 +212,7 @@ class SocialSettings extends ConsumerWidget {
               if (url.isNotEmpty) {
                 AppUtils.openLink(url);
               } else {
-                Fluttertoast.showToast(msg: 'No Telegram link provided');
+                Fluttertoast.showToast(msg: 'no_telegram_link_provided'.tr());
               }
             },
           ),

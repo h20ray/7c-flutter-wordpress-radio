@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,7 +13,7 @@ class AllAuthorsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Authors'),
+        title: Text('authors'.tr()),
       ),
       body: const _AuthorListRenderer(),
     );
@@ -34,7 +35,7 @@ class _AuthorListRenderer extends ConsumerWidget {
     } else if (users.refershError) {
       return Center(child: Text(users.errorMessage));
     } else if (users.items.isEmpty) {
-      return const Center(child: Text('No Users Found'));
+      return Center(child: Text('no_users_found'.tr()));
     } else {
       return Column(
         children: [

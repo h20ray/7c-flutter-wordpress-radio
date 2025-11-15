@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,8 +20,8 @@ class ParentCategories extends ConsumerWidget {
     } else if (parentCategories.refershError) {
       return Center(child: Text(parentCategories.errorMessage));
     } else if (parentCategories.items.isEmpty) {
-      return const Center(
-        child: Text('No Categories Found'),
+      return Center(
+        child: Text('no_categories_found'.tr()),
       );
     } else {
       return Expanded(

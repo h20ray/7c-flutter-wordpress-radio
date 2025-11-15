@@ -174,3 +174,32 @@ Test Android App Links:
 adb shell 'am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://newspro.uixxy.com/elon-musk-bought-twitter/"'
 ```
 
+## Translation Health Check
+
+Run the translation checker locally to ensure keys are in sync and no hardcoded texts slip in:
+
+```bash
+dart tool/check_translations.dart
+```
+
+Optional: run this before every commit by installing a simple Git hook:
+
+```bash
+printf '#!/bin/sh\ndart tool/check_translations.dart || exit 1\n' > .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
+
+## Prune Unused Translation Keys
+
+Preview (dry-run) which keys are unused per locale:
+
+```bash
+dart tool/prune_translations.dart
+```
+
+Apply removals (backs up originals as `<file>.backup` and writes pruned JSON):
+
+```bash
+dart tool/prune_translations.dart --write
+```
+

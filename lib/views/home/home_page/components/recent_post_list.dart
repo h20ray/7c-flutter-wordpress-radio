@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sliver_tools/sliver_tools.dart';
@@ -23,8 +24,8 @@ class RecentPostFetcherSection extends ConsumerWidget {
     } else if (recentPosts.refershError) {
       return Center(child: Text(recentPosts.errorMessage));
     } else if (recentPosts.posts.isEmpty) {
-      return const SliverToBoxAdapter(
-        child: Center(child: Text('No Posts Found')),
+      return SliverToBoxAdapter(
+        child: Center(child: Text('no_posts_found'.tr())),
       );
     } else {
       return MultiSliver(

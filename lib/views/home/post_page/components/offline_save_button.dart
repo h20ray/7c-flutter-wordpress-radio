@@ -111,7 +111,7 @@ class OfflineSaveButton extends ConsumerWidget {
                 color: Colors.red.withValues(alpha: 0.8),
                 size: iconSize,
               ),
-              tooltip: 'Error loading status',
+              tooltip: 'error_loading_status'.tr(),
             )
           : OutlinedButton.icon(
               onPressed: () =>
@@ -120,7 +120,7 @@ class OfflineSaveButton extends ConsumerWidget {
                 AppIcons.download,
                 size: iconSize,
               ),
-              label: Text('Error'),
+              label: Text('error'.tr()),
             ),
     );
   }

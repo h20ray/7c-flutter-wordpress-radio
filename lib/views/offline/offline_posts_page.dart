@@ -268,7 +268,7 @@ class _OfflinePostsPageState extends ConsumerState<OfflinePostsPage> {
                           ),
                           iconSize: 18,
                           onPressed: () => _removePost(context, post),
-                          tooltip: 'Remove from offline',
+                          tooltip: 'remove_from_offline'.tr(),
                         ),
                       ],
                     ),

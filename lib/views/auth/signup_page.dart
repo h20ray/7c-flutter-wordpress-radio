@@ -193,7 +193,8 @@ class _LoginFormState extends ConsumerState<SignupForm> {
               Expanded(
                 child: Row(
                   children: [
-                    const Text('Agree to our '),
+                    Text('agree_to_terms_prefix'.tr()),
+                    const SizedBox(width: 4),
                     TextButton(
                       onPressed: () {
                         final url = ref
@@ -206,7 +207,7 @@ class _LoginFormState extends ConsumerState<SignupForm> {
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
                       ),
-                      child: const Text('Terms & Services'),
+                      child: Text('terms_services'.tr()),
                     ),
                   ],
                 ),

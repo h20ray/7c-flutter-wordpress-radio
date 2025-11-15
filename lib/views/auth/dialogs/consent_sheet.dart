@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,9 +23,9 @@ class CookieConsentSheet extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const Text(
-            'Cookie Consent',
-            style: TextStyle(
+          Text(
+            'cookie_consent_title'.tr(),
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
@@ -38,9 +39,9 @@ class CookieConsentSheet extends ConsumerWidget {
             onTap: () {
               AppUtils.openLink(privacyPolicy);
             },
-            child: const Text(
-              'Privacy Policy',
-              style: TextStyle(
+            child: Text(
+              'privacy_policy'.tr(),
+              style: const TextStyle(
                 color: Colors.blue, // Make the link text blue
                 decoration:
                     TextDecoration.underline, // Add underline to the link text
@@ -56,7 +57,7 @@ class CookieConsentSheet extends ConsumerWidget {
                   Navigator.of(context).pop();
                   SystemNavigator.pop();
                 },
-                child: const Text('Decline'),
+                child: Text('decline'.tr()),
               ),
               TextButton(
                 onPressed: () {
@@ -64,7 +65,7 @@ class CookieConsentSheet extends ConsumerWidget {
                   Navigator.of(context).pop();
                   OnboardingRepository().saveConsentDone();
                 },
-                child: const Text('Accept'),
+                child: Text('accept'.tr()),
               ),
             ],
           ),

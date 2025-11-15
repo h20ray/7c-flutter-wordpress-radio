@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../constants/app_icons.dart';
 
@@ -63,7 +64,7 @@ class DummyArticleTile extends StatelessWidget {
                           borderRadius: AppDefaults.borderRadius,
                         ),
                         child: Text(
-                          'A Very Simple Title and Effective one with',
+                          'dummy_article_title'.tr(),
                           style: Theme.of(context).textTheme.bodyLarge,
                           maxLines: 1,
                         ),
@@ -89,7 +90,7 @@ class DummyArticleTile extends StatelessWidget {
                                 color: Colors.white,
                                 borderRadius: AppDefaults.borderRadius,
                               ),
-                              child: const Text('Level'),
+                              child: Text('dummy_category_label'.tr()),
                             ),
                           ),
                         ),
@@ -123,7 +124,7 @@ class DummyArticleTile extends StatelessWidget {
                               borderRadius: AppDefaults.borderRadius,
                             ),
                             child: Text(
-                              '0 Minute Read',
+                              'dummy_minute_read'.tr(),
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                           ),
@@ -159,7 +160,7 @@ class DummyArticleTile extends StatelessWidget {
                               borderRadius: AppDefaults.borderRadius,
                             ),
                             child: Text(
-                              '24 February',
+                              'dummy_date_label'.tr(),
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                           ),

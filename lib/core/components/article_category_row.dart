@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -116,7 +117,7 @@ class ArticleCategoryRow extends ConsumerWidget {
                           backgroundColor:
                               Theme.of(context).scaffoldBackgroundColor,
                           label: Text(
-                            'used for loading',
+                            'loading_placeholder'.tr(),
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                           side: const BorderSide(
@@ -129,7 +130,7 @@ class ArticleCategoryRow extends ConsumerWidget {
                   ),
                 ),
               ),
-          error: (v) => const Text('There is en error')),
+          error: (v) => Text('error_fetching_data'.tr())),
     );
   }
 }
@@ -201,7 +202,7 @@ class ArticleCategoryRowText extends ConsumerWidget {
                           backgroundColor:
                               Theme.of(context).scaffoldBackgroundColor,
                           label: Text(
-                            'used for loading',
+                            'loading_placeholder'.tr(),
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                           side: const BorderSide(
@@ -214,7 +215,7 @@ class ArticleCategoryRowText extends ConsumerWidget {
                   ),
                 ),
               ),
-          error: (v) => const Text('There is en error')),
+          error: (v) => Text('error_fetching_data'.tr())),
     );
   }
 }

@@ -578,7 +578,7 @@ class _InfoDialog extends StatelessWidget {
                 ),
                 const SizedBox(width: 12),
                 Text(
-                  'Information',
+                  'radio_info_dialog_title'.tr(),
                   style: theme.textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
@@ -597,29 +597,40 @@ class _InfoDialog extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              'Radio Station Information',
+              'radio_info_dialog_heading'.tr(),
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 12),
             Text(
-              'Welcome to UpRadio Semarang Radio!',
+              'radio_info_dialog_welcome'.tr(namedArgs: {
+                'radio_station_name': 'radio_station_name'.tr(),
+              }),
               style: theme.textTheme.bodyMedium?.copyWith(
                 height: 1.5,
               ),
             ),
             const SizedBox(height: 16),
             Text(
-              'Station Details',
+              'radio_info_details_title'.tr(),
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 8),
-            _InfoRow(label: 'Frequency', value: '98.5 FM'),
-            _InfoRow(label: 'Location', value: 'Semarang'),
-            _InfoRow(label: 'Website', value: 'upradio.id'),
+            _InfoRow(
+              label: 'radio_info_frequency_label'.tr(),
+              value: 'radio_info_frequency_value'.tr(),
+            ),
+            _InfoRow(
+              label: 'radio_info_location_label'.tr(),
+              value: 'radio_info_location_value'.tr(),
+            ),
+            _InfoRow(
+              label: 'radio_info_website_label'.tr(),
+              value: 'radio_info_website_value'.tr(),
+            ),
             const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
@@ -631,7 +642,7 @@ class _InfoDialog extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text('Close'),
+                child: Text('close'.tr()),
               ),
             ),
           ],
@@ -960,8 +971,8 @@ class _SafeAlbumArtWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'No Album Art',
-                  style: TextStyle(
+                  'radio_no_album_art'.tr(),
+                  style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -991,21 +1002,37 @@ class _DebugInfoSheet extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Radio Configuration', style: TextStyle(fontWeight: FontWeight.w700)),
+              Text(
+                'radio_debug_title'.tr(),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+              ),
               const SizedBox(height: 12),
-              Text('Autoplay: ${config.autoplay}'),
-              Text('Show Album Cover: ${config.showAlbumCover}'),
-              Text('Text Scrolling: ${config.textScrolling}'),
+              Text('radio_debug_autoplay'.tr(namedArgs: {
+                'value': config.autoplay.toString(),
+              })),
+              Text('radio_debug_show_cover'.tr(namedArgs: {
+                'value': config.showAlbumCover.toString(),
+              })),
+              Text('radio_debug_text_scrolling'.tr(namedArgs: {
+                'value': config.textScrolling.toString(),
+              })),
               const SizedBox(height: 8),
-              Text('Stream URL: ${config.streamUrl}', style: const TextStyle(fontFamily: 'monospace')),
+              Text(
+                'radio_debug_stream_url'.tr(namedArgs: {
+                  'url': config.streamUrl,
+                }),
+                style: const TextStyle(fontFamily: 'monospace'),
+              ),
               const SizedBox(height: 12),
             ],
           ),
         );
       },
-      orElse: () => const Padding(
-        padding: EdgeInsets.all(24),
-        child: Text('Radio configuration not loaded'),
+      orElse: () => Padding(
+        padding: const EdgeInsets.all(24),
+        child: Text('radio_debug_not_loaded'.tr()),
       ),
     );
   }
@@ -1035,10 +1062,10 @@ class _HeroSectionState extends State<_HeroSection> with SingleTickerProviderSta
 
   String _greeting() {
     final hour = DateTime.now().hour;
-    if (hour >= 4 && hour < 11) return 'Selamat Pagi';
-    if (hour >= 11 && hour < 15) return 'Selamat Siang';
-    if (hour >= 15 && hour < 18) return 'Selamat Sore';
-    return 'Selamat Malam';
+    if (hour >= 4 && hour < 11) return 'greeting_morning'.tr();
+    if (hour >= 11 && hour < 15) return 'greeting_midday'.tr();
+    if (hour >= 15 && hour < 18) return 'greeting_evening'.tr();
+    return 'greeting_night'.tr();
   }
 
   @override
