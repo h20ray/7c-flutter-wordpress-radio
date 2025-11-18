@@ -22,6 +22,7 @@ import '../repositories/others/search_local.dart';
 import '../../features/radio/presentation/bloc/radio_bloc.dart';
 import '../../features/radio/presentation/bloc/radio_event.dart';
 import '../../features/radio/presentation/bloc/radio_player_bloc.dart';
+import 'loading_state_provider.dart';
 
 // Enum to represent app state
 enum AppState {
@@ -140,36 +141,52 @@ class AppInitializer extends StateNotifier<InitializationState> {
   Future<void> _performCriticalInitialization(
       InitializationArgument arg) async {
     Log.info('Starting critical initialization');
+    final loadingNotifier = ref.read(loadingStateProvider.notifier);
+
+    // Helper to safely update progress (deferred to avoid build-time updates)
+    void updateProgress(double progress, LoadingStatus status) {
+      Future.microtask(() {
+        loadingNotifier.updateProgress(progress, status);
+      });
+    }
 
     // Initialize dependency injection (now idempotent and async)
+    updateProgress(0.1, LoadingStatus.initializingDependencies);
     await initDependencies();
 
     // Open essential boxes
+    updateProgress(0.2, LoadingStatus.initializingStorage);
     await Hive.openBox('settingsBox');
     await Hive.openBox<NotificationModel>('notifications');
 
     // Initialize connectivity monitoring
+    updateProgress(0.3, LoadingStatus.initializingConnectivity);
     ref.read(connectivityProvider);
 
     // Initialize notifications
+    updateProgress(0.4, LoadingStatus.initializingNotifications);
     await NotificationHandler.init(arg.context);
 
     // Initialize onboarding repository
+    updateProgress(0.5, LoadingStatus.initializingDependencies);
     await OnboardingRepository().init();
 
     // Initialize post style repository
     await PostStyleRepository().init();
 
     // Initialize auth controller
+    updateProgress(0.6, LoadingStatus.initializingAuth);
     await ref.read(authController.notifier).init();
 
     // Prefetch radio configuration
+    updateProgress(0.7, LoadingStatus.initializingRadio);
     await _prefetchRadioConfig();
 
     // Initialize RadioPlayerBloc early to set up stream listeners
     getIt<RadioPlayerBloc>();
     // Bloc is now ready to receive events from anywhere in the app
 
+    updateProgress(0.9, LoadingStatus.preparingApp);
     Log.info('Critical initialization complete');
   }
 
@@ -177,11 +194,22 @@ class AppInitializer extends StateNotifier<InitializationState> {
   Future<void> _performLazyInitialization(InitializationArgument arg) async {
     Log.info('Starting lazy initialization');
 
-    // Initialize Firebase
-    if (Firebase.apps.isEmpty) {
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
+    // Initialize Firebase (with error handling for duplicate initialization)
+    try {
+      if (Firebase.apps.isEmpty) {
+        await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
+        );
+      }
+    } catch (e) {
+      // Firebase might already be initialized, ignore the error
+      if (e.toString().contains('duplicate-app') || 
+          e.toString().contains('already exists')) {
+        Log.info('Firebase already initialized, skipping');
+      } else {
+        // Re-throw if it's a different error
+        rethrow;
+      }
     }
 
     // Initialize authentication

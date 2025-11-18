@@ -95,6 +95,10 @@
   "advertisement_key": "Iklan",
   "loading": "Memuat...",
   "share": "Bagikan",
+  "share_this_app": "Bagikan Aplikasi Ini",
+  "rate_this_app": "Nilai Aplikasi Ini",
+  "buy_this_app": "Beli Aplikasi Ini",
+  "language": "Bahasa",
   "save": "Simpan",
   "saving": "Menyimpan...",
   "tags": "Tag",
@@ -313,5 +317,15 @@
   "shoutbox_connection_error": "Error koneksi. Silakan periksa koneksi internet dan coba lagi.",
   "shoutbox_connection_lost": "Koneksi terputus. Silakan periksa koneksi internet dan coba lagi.",
   "shoutbox_server_error": "Terjadi kesalahan server. Silakan coba lagi nanti.",
-  "shoutbox_request_cancelled": "Request dibatalkan. Silakan coba lagi."
+  "shoutbox_request_cancelled": "Request dibatalkan. Silakan coba lagi.",
+  "loading_checking_connection": "Memeriksa koneksi...",
+  "loading_config": "Memuat konfigurasi...",
+  "loading_dependencies": "Menginisialisasi dependensi...",
+  "loading_storage": "Menginisialisasi penyimpanan...",
+  "loading_connectivity": "Menyiapkan konektivitas...",
+  "loading_notifications": "Menginisialisasi notifikasi...",
+  "loading_auth": "Menyiapkan autentikasi...",
+  "loading_radio": "Memuat konfigurasi radio...",
+  "loading_preparing": "Mempersiapkan aplikasi...",
+  "loading_complete": "Hampir siap..."
 }

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import '../constants/app_images.dart';
 
 class ArticleModel {
   int id;
@@ -101,12 +102,18 @@ class ArticleModel {
   }
 
   factory ArticleModel.fromMap(Map<String, dynamic> map) {
+    final featuredImageUrl = map['featured_image_url'];
+    final defaultImage = (featuredImageUrl == null || 
+                         (featuredImageUrl is String && featuredImageUrl.isEmpty))
+        ? AppImages.defaultFeaturedImage
+        : featuredImageUrl;
+    
     return ArticleModel(
       id: map['id'] ?? 0,
       title: map['title']['rendered'],
       content: map['content']['rendered'] ?? '',
       link: map['link'] ?? '',
-      featuredImage: map['featured_image_url'],
+      featuredImage: defaultImage,
       heroTag: map['slug'] ?? '',
       categories:
           map['categories'] != null ? List<int>.from(map['categories']) : [],

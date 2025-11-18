@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/app_defaults.dart';
+import '../constants/app_images.dart';
 import '../controllers/internet/internet_state_provider.dart';
 import 'skeleton.dart';
 
@@ -101,28 +102,13 @@ class NetworkImageWithLoader extends ConsumerWidget {
   }
 
   Widget _buildErrorPlaceholder() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: borderRadius ?? BorderRadius.all(Radius.circular(radius)),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.broken_image,
-            size: 30,
-            color: Colors.grey[400],
-          ),
-          const SizedBox(height: 4),
-          Text(
-            'Image unavailable',
-            style: TextStyle(
-              color: Colors.grey[500],
-              fontSize: 12,
-            ),
-          ),
-        ],
+    return ClipRRect(
+      borderRadius: borderRadius ?? BorderRadius.all(Radius.circular(radius)),
+      child: Image.asset(
+        AppImages.defaultFeaturedImage,
+        fit: fit,
+        width: double.infinity,
+        height: double.infinity,
       ),
     );
   }

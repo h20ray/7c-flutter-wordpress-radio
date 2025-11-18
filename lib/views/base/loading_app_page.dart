@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_pro/core/controllers/internet/internet_state_provider.dart';
 import '../../core/app/initialization_provider.dart';
+import '../../core/app/loading_state_provider.dart';
 import '../../core/logger/app_logger.dart';
 
 import '../../core/controllers/config/config_controllers.dart';
@@ -25,8 +26,15 @@ class LoadingAppPage extends ConsumerWidget {
 
     Log.info('Internet state: ${internetAvailable.internetState}');
 
+    // Update loading state based on internet check (deferred to avoid build-time updates)
+    final loadingNotifier = ref.read(loadingStateProvider.notifier);
+    
     // Don't show any UI until internet state is determined
     if (internetAvailable.internetState == InternetState.loading) {
+      // Defer state update to after build
+      Future.microtask(() {
+        loadingNotifier.updateProgress(0.0, LoadingStatus.checkingConnection);
+      });
       return const LoadingDependencies();
     } else if (internetAvailable.internetState == InternetState.disconnected) {
       return const OfflinePostsPage();
@@ -37,28 +45,50 @@ class LoadingAppPage extends ConsumerWidget {
 
       // Initialize config only if it's still loading (first time)
       if (config.isLoading) {
+        // Defer state update to after build
+        Future.microtask(() {
+          loadingNotifier.updateProgress(0.05, LoadingStatus.loadingConfig);
+        });
         configNotifier.init();
       }
 
       return config.map(
         data: (data) {
-          // Initialize the app when config is loaded
-          _initializeApp(ref, data.value, context);
+          // Initialize the app when config is loaded (deferred to avoid build-time updates)
+          Future.microtask(() {
+            _initializeApp(ref, data.value, context);
+          });
 
           // Watch the app state
           final appState = ref.watch(appStateProvider);
 
           return appState.when(
-            data: (state) => _buildAppStateUI(state, data.value),
+            data: (state) {
+              // Mark as complete when app state is determined (deferred)
+              Future.microtask(() {
+                loadingNotifier.updateProgress(1.0, LoadingStatus.complete);
+              });
+              return _buildAppStateUI(state, data.value);
+            },
             loading: () => const LoadingDependencies(),
             error: (error, _) {
               Log.fatal(error: error, stackTrace: StackTrace.current);
+              // Defer error state update
+              Future.microtask(() {
+                loadingNotifier.setError(error.toString());
+              });
               return const CoreErrorPage();
             },
           );
         },
         error: (t) => const ConfigErrorPage(),
-        loading: (t) => const LoadingDependencies(),
+        loading: (t) {
+          // Defer state update to after build
+          Future.microtask(() {
+            loadingNotifier.updateProgress(0.05, LoadingStatus.loadingConfig);
+          });
+          return const LoadingDependencies();
+        },
       );
     } else {
       // Handle error state

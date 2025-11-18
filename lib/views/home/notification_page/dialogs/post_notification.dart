@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:news_pro/config/app_images_config.dart';
 
 import '../../../../core/components/network_image.dart';
 import '../../../../core/constants/constants.dart';
@@ -29,7 +28,7 @@ class PostOnNotification extends StatelessWidget {
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.3,
                 child: NetworkImageWithLoader(
-                    post.featuredImage ?? AppImagesConfig.noImageUrl),
+                    post.featuredImage ?? AppImages.defaultFeaturedImage),
               ),
               Positioned(
                 right: 0,

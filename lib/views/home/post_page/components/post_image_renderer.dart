@@ -38,7 +38,12 @@ class PostImageRenderer extends StatelessWidget {
                       ),
                     ),
                   )
-                : const SizedBox(),
+                : Image.asset(
+                    AppImages.defaultFeaturedImage,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,
+                  ),
       ),
     );
   }

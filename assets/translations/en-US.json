@@ -95,6 +95,10 @@
   "advertisement_key": "Advertisement",
   "loading": "Loading...",
   "share": "Share",
+  "share_this_app": "Share This App",
+  "rate_this_app": "Rate This App",
+  "buy_this_app": "Buy This App",
+  "language": "Language",
   "save": "Save",
   "saving": "Saving...",
   "tags": "Tags",
@@ -313,5 +317,15 @@
   "radio_connecting": "Connecting...",
   "radio_retrying": "Retrying...",
   "removed_from_offline": "Removed from offline",
-  "retry": "Retry"
+  "retry": "Retry",
+  "loading_checking_connection": "Checking connection...",
+  "loading_config": "Loading configuration...",
+  "loading_dependencies": "Initializing dependencies...",
+  "loading_storage": "Initializing storage...",
+  "loading_connectivity": "Setting up connectivity...",
+  "loading_notifications": "Initializing notifications...",
+  "loading_auth": "Setting up authentication...",
+  "loading_radio": "Loading radio configuration...",
+  "loading_preparing": "Preparing app...",
+  "loading_complete": "Almost ready..."
 }
