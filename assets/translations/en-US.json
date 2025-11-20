@@ -327,5 +327,7 @@
   "loading_auth": "Setting up authentication...",
   "loading_radio": "Loading radio configuration...",
   "loading_preparing": "Preparing app...",
-  "loading_complete": "Almost ready..."
+  "loading_complete": "Almost ready...",
+  "categories": "Categories",
+  "recent_news": "Recent News"
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/services.dart';
 import 'package:radio_player/radio_player.dart';
 import '../../../../config/radio_tujuhcahaya_config.dart';
@@ -136,7 +137,7 @@ class RadioPlayerRemoteDataSourceImpl implements RadioPlayerRemoteDataSource {
             '[RadioPlayerDataSource] Setting station with URL: ${config.streamUrl}');
       }
       await RadioPlayer.setStation(
-        title: 'Tujuh Cahaya Radio',
+        title: 'radio_station_name'.tr(),
         url: config.streamUrl,
         parseStreamMetadata: true,
         lookupOnlineArtwork: config.albumArtSource == 3,

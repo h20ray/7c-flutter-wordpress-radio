@@ -85,3 +85,7 @@ flutter {
     source '../..'
 }
 
+
+dependencies {
+    implementation 'com.facebook.infer.annotation:infer-annotation:0.18.0'
+}

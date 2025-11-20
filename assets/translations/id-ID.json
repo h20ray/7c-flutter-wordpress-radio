@@ -327,5 +327,7 @@
   "loading_auth": "Menyiapkan autentikasi...",
   "loading_radio": "Memuat konfigurasi radio...",
   "loading_preparing": "Mempersiapkan aplikasi...",
-  "loading_complete": "Hampir siap..."
+  "loading_complete": "Hampir siap...",
+  "categories": "Kategori",
+  "recent_news": "Berita Terbaru"
 }
