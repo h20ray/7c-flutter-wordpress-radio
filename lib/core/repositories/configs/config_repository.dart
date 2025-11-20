@@ -13,7 +13,7 @@ class ConfigRepository extends ConfigRepositoryAbstract {
     required this.dio,
   });
 
-  final String baseUrl = 'https://${WPConfig.url}/wp-json/newspro/v2/config';
+  final String baseUrl = 'https://${WPConfig.url}/wp-json/tujuhcahaya/v2/config';
 
   @override
   Future<NewsProConfig?> getNewsProConfig() async {

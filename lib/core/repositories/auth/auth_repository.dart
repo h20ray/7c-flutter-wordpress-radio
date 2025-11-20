@@ -315,7 +315,7 @@ class AuthRepository extends AuthRepoAbstract {
     required String email,
     required String password,
   }) async {
-    String url = 'https://${WPConfig.url}/wp-json/newspro/v2/users/register/';
+    String url = 'https://${WPConfig.url}/wp-json/tujuhcahaya/v2/users/register/';
     Log.info('Signup attempt for: $userName');
 
     try {
@@ -347,7 +347,7 @@ class AuthRepository extends AuthRepoAbstract {
   @override
   Future<bool> sendPasswordResetLink(String email) async {
     String url =
-        'https://${WPConfig.url}/wp-json/newspro/v2/users/forgot-password';
+        'https://${WPConfig.url}/wp-json/tujuhcahaya/v2/users/forgot-password';
     Log.info('Password reset request for: ${email.split('@')[0]}***');
 
     try {
@@ -482,7 +482,7 @@ class AuthRepository extends AuthRepoAbstract {
           };
           await googleSignIn.signOut();
 
-          const url = 'https://${WPConfig.url}/wp-json/newspro/v2/users/social';
+          const url = 'https://${WPConfig.url}/wp-json/tujuhcahaya/v2/users/social';
 
           try {
             final response = await dio.post(url, data: req);
@@ -555,7 +555,7 @@ class AuthRepository extends AuthRepoAbstract {
         'loginType': 'apple',
       };
 
-      const url = 'https://${WPConfig.url}/wp-json/newspro/v2/users/social';
+      const url = 'https://${WPConfig.url}/wp-json/tujuhcahaya/v2/users/social';
 
       try {
         final response = await dio.post(url, data: req);

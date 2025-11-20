@@ -18,6 +18,13 @@ subprojects {
             project.android {
                 compileSdkVersion 35
             }
+            // Suppress compiler warnings for all subprojects
+            project.tasks.withType(JavaCompile) {
+                options.compilerArgs << '-Xlint:-deprecation'
+                options.compilerArgs << '-Xlint:-unchecked'
+                options.compilerArgs << '-Xlint:-processing'
+                options.compilerArgs << '-Xlint:-options'
+            }
         }
     }
 }

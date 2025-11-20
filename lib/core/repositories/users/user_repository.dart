@@ -104,7 +104,7 @@ class UserRepository {
   }
 
   Future<void> deleteUsers(String token) async {
-    const url = 'https://${WPConfig.url}/wp-json/newspro/v2/users/delete';
+    const url = 'https://${WPConfig.url}/wp-json/tujuhcahaya/v2/users/delete';
     try {
       final response = await dio.delete(
         url,

@@ -11,7 +11,7 @@ class WPAdRepository {
 
   Future<List<WPAd>> getAllAds() async {
     List<WPAd> allAds = [];
-    const url = 'https://${WPConfig.url}/wp-json/newspro/v2/custom-ads';
+    const url = 'https://${WPConfig.url}/wp-json/tujuhcahaya/v2/custom-ads';
 
     try {
       final response = await dio.get(url);

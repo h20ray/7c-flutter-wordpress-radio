@@ -184,19 +184,6 @@ lib/features/radio/
 - ✅ **Debouncing**: Prevents rapid-click issues and race conditions
 - ✅ **Auto-Play**: Seamless initialization with immediate playback
 - ✅ **Error Recovery**: Automatic retry on initialization failures
-- ✅ **State Preservation**: Maintains configuration across state transitions
-
-## Configuration
-
-### WordPress API Endpoint
-```
-GET https://{domain}/wp-json/newspro/v2/radio-config
-```
-
-### Response Format
-```json
-{
-  "enabled": true,
   "streamUrl": "https://stream.example.com/radio",
   "autoplay": false,
   "showAlbumCover": true,

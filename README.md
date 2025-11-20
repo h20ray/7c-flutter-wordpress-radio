@@ -139,10 +139,9 @@ Android package name:
 flutter pub run change_app_package_name:main com.yourapp.id
 ```
 
-Splash screen and launcher icons:
+Launcher icons:
 
 ```bash
-flutter pub run flutter_native_splash:create
 flutter pub run flutter_launcher_icons:main
 ```
 

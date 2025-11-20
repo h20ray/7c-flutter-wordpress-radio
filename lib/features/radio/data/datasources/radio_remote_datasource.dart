@@ -14,7 +14,7 @@ class RadioRemoteDataSourceImpl implements RadioRemoteDataSource {
 
   @override
   Future<RadioModel> getRadioConfig() async {
-    final url = 'https://${WPConfig.url}/wp-json/newspro/v2/radio-config';
+    final url = 'https://${WPConfig.url}/wp-json/tujuhcahaya/v2/radio-config';
     developer.log('[RadioDataSource] Fetching radio config from: $url',
         name: 'RadioConfig');
 
