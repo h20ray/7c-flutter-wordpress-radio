@@ -6,9 +6,9 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" /> 
    <application
-        android:label="NewsPro"
+        android:label="TujuhcahayaDev"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon"
+        android:icon="@mipmap/ic_launcher"
         android:allowBackup="false"
         android:fullBackupContent="false"
         >
@@ -92,3 +92,4 @@
     </intent>
     </queries>
 </manifest>
+

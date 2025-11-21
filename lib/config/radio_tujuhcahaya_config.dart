@@ -37,7 +37,7 @@ class RadioTujuhCahayaConfig {
   static const String fallbackArtworkPath = 'assets/images/fallback_artwork.jpg';
 
   /// Fallback Metadata (Displayed when stream metadata is missing)
-  static const String fallbackArtist = 'UpRadio Semarang';
+  static const String fallbackArtist = 'Now On Air';
   static const String fallbackTitle = 'Live Radio Stream';
 
   /// Request/Feedback WebView configuration
@@ -123,7 +123,7 @@ class RadioTujuhCahayaConfig {
   static const int maxBufferUnderruns = 3; // Switch URL after 3 underruns
 
   /// Pre-buffering configuration for smooth playback
-  static const int preBufferTimeMs = 2500; // 2.5 seconds pre-buffer
+  static const int preBufferTimeMs = 500; // 2.5 seconds pre-buffer
   static const int audioSessionOptimizationDelayMs = 200; // 200ms delay for audio session
   static const int audioFocusDelayMs = 100; // 100ms delay for audio focus
 
@@ -139,9 +139,9 @@ class RadioTujuhCahayaConfig {
   static const int albumArtMaxConcurrentRequests = 3;
 
   /// Debug settings
-  static const bool enableDebugLogging = true;
-  static const bool enableVerboseLogging = true; // Enable for testing
-  static const bool enablePerformanceMonitoring = true; // Enable for testing
+  static const bool enableDebugLogging = false;
+  static const bool enableVerboseLogging = false; // Enable for testing
+  static const bool enablePerformanceMonitoring = false; // Enable for testing
   static const bool logNotificationUpdates = true; // Enable for testing
   static const bool enableShoutboxDebugLogging = false; // Disable shoutbox debug logs to reduce spam
 }

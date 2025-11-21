@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'dart:developer' as developer;
+import 'dart:convert';
 import '../../../../config/wp_config.dart';
 import '../models/radio_model.dart';
 
@@ -15,26 +15,31 @@ class RadioRemoteDataSourceImpl implements RadioRemoteDataSource {
   @override
   Future<RadioModel> getRadioConfig() async {
     final url = 'https://${WPConfig.url}/wp-json/tujuhcahaya/v2/radio-config';
-    developer.log('[RadioDataSource] Fetching radio config from: $url',
-        name: 'RadioConfig');
-
     final response = await dio.get(url);
 
-    developer.log('[RadioDataSource] Response status: ${response.statusCode}',
-        name: 'RadioConfig');
-    developer.log('[RadioDataSource] Response data: ${response.data}',
-        name: 'RadioConfig');
-
     if (response.statusCode == 200) {
-      final radioModel = RadioModel.fromJson(response.data);
-      developer.log(
-          '[RadioDataSource] Parsed radio model - albumArtSource: ${radioModel.albumArtSource}',
-          name: 'RadioConfig');
-      return radioModel;
+      // Ensure we have a Map<String, dynamic>
+      final responseData = response.data;
+      Map<String, dynamic> jsonData;
+
+      if (responseData is Map<String, dynamic>) {
+        jsonData = responseData;
+      } else if (responseData is Map) {
+        jsonData = Map<String, dynamic>.from(responseData);
+      } else if (responseData is String) {
+        // If response is a JSON string, parse it
+        try {
+          jsonData = json.decode(responseData) as Map<String, dynamic>;
+        } catch (e) {
+          throw Exception('Failed to parse JSON response: $e');
+        }
+      } else {
+        throw Exception(
+            'Invalid response data type: ${responseData.runtimeType}');
+      }
+
+      return RadioModel.fromJson(jsonData);
     } else {
-      developer.log(
-          '[RadioDataSource] ERROR: Failed to load radio config - status: ${response.statusCode}',
-          name: 'RadioConfig');
       throw Exception('Failed to load radio config');
     }
   }

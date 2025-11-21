@@ -1,4 +1,4 @@
-package com.tujuhcahaya.upradiosmg
+package com.tujuhcahaya.devx
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine

@@ -142,8 +142,14 @@ flutter pub run change_app_package_name:main com.yourapp.id
 Launcher icons:
 
 ```bash
+# Using the modern command format
+dart run flutter_launcher_icons
+
+# Or using the legacy format (still works)
 flutter pub run flutter_launcher_icons:main
 ```
+
+Note: The project uses `flutter_launcher_icons` (not the deprecated `flutter_icons`). Configuration is in `pubspec.yaml` under `flutter_launcher_icons:`.
 
 Build APKs:
 

@@ -1,5 +1,4 @@
 import '../../domain/entities/radio_entity.dart';
-import 'dart:developer' as developer;
 
 class RadioModel extends RadioEntity {
   const RadioModel({
@@ -19,20 +18,21 @@ class RadioModel extends RadioEntity {
 
   factory RadioModel.fromJson(Map<String, dynamic> json) {
     final albumArtSource = json['albumArtSource'] ?? 1;
-
-    developer.log('[RadioModel] Parsing radio configuration from JSON',
-        name: 'RadioConfig');
-    developer.log('[RadioModel] Raw JSON data: $json', name: 'RadioConfig');
-    developer.log('[RadioModel] Parsed albumArtSource: $albumArtSource',
-        name: 'RadioConfig');
-    developer.log('[RadioModel] Stream URL: ${json['streamUrl']}',
-        name: 'RadioConfig');
-    developer.log('[RadioModel] Show album cover: ${json['showAlbumCover']}',
-        name: 'RadioConfig');
+    
+    // Extract streamUrl with proper handling
+    final streamUrlValue = json['streamUrl'];
+    String streamUrl = '';
+    if (streamUrlValue != null) {
+      if (streamUrlValue is String) {
+        streamUrl = streamUrlValue;
+      } else {
+        streamUrl = streamUrlValue.toString();
+      }
+    }
 
     return RadioModel(
       enabled: json['enabled'] ?? false,
-      streamUrl: json['streamUrl'] ?? '',
+      streamUrl: streamUrl,
       autoplay: json['autoplay'] ?? false,
       showAlbumCover: json['showAlbumCover'] ?? true,
       textScrolling: json['textScrolling'] ?? true,
