@@ -33,6 +33,17 @@ subprojects {
     project.evaluationDependsOn(':app')
 }
 
+subprojects {
+    project.configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.facebook.infer.annotation' && details.requested.name == 'infer-annotation') {
+                details.useVersion '0.18.0'
+            }
+        }
+    }
+}
+
+
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
